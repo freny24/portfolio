@@ -38,7 +38,7 @@ export const site = {
   url: "https://freny-reji.vercel.app", // TODO: update to your final Vercel domain
   // ---- Social links ----
   github: "https://github.com/freny24",
-  linkedin: "https://www.linkedin.com/in/freny-reji", // TODO: replace with your exact LinkedIn URL
+  linkedin: "https://www.linkedin.com/in/freny-reji-2401",
 } as const;
 
 /* ============================================================
@@ -215,8 +215,8 @@ export const projects: Project[] = [
     lessons:
       "Calibration matters as much as ranking. A well-ordered but miscalibrated probability is dangerous when a human treats 0.8 as '80% likely'.",
     links: {
-      github: "https://github.com/freny24", // TODO: replace with the sepsis repo URL
-      demo: "",
+      github: "https://github.com/freny24/sepsis-early-warning",
+      demo: "https://sepsis-early-warning-sooty.vercel.app/",
       demoLabel: "Live Dashboard",
     },
   },
@@ -248,8 +248,8 @@ export const projects: Project[] = [
     lessons:
       "Modern data-stack ergonomics (DuckDB + dbt) make rigorous analytics engineering feasible for a single developer.",
     links: {
-      github: "https://github.com/freny24", // TODO: replace with the Smart Money Pulse repo URL
-      demo: "",
+      github: "https://github.com/freny24/smart-money-pulse",
+      demo: "https://smart-money-pulse.streamlit.app/",
       demoLabel: "Live Dashboard",
     },
   },
@@ -280,8 +280,8 @@ export const projects: Project[] = [
     lessons:
       "Explainability turns a prediction into an argument a stakeholder can reason about.",
     links: {
-      github: "https://github.com/freny24", // TODO: replace with the Hype vs Box Office repo URL
-      demo: "",
+      github: "https://github.com/freny24/hype-vs-boxoffice",
+      demo: "https://hype-vs-boxoffice.streamlit.app/",
       demoLabel: "Live Dashboard",
     },
   },
@@ -292,39 +292,57 @@ export const projects: Project[] = [
    * you don't want.
    */
   {
-    slug: "floating-pv-dashboard",
-    title: "Floating Photovoltaics Global Dashboard",
-    tagline: "Satellite time-series → interactive geospatial insight",
+    slug: "fpv-webtool",
+    title: "Floating Photovoltaics Web Tool",
+    tagline: "Satellite time-series to interactive geospatial insight",
     category: "Geospatial Data Science",
     missionType: "Satellite Dashboard",
     year: "2026",
-    verified: false,
+    verified: true,
     problem:
-      "Placeholder — describe the floating-solar / water-body monitoring problem this dashboard addresses.",
+      "Assessing where floating solar is viable means tracking many water bodies over time — combining satellite imagery, ecological indicators, and trends into something researchers can actually explore, not raw pixels.",
     approach: [
-      "Placeholder — outline the Google Earth Engine + ML workflow.",
-      "Placeholder — describe the Plotly/Leaflet dashboard.",
+      "Process satellite time-series for global water bodies using ML workflows in Python and Google Earth Engine.",
+      "Surface geospatial maps, ecological indicators, and trend analysis through an interactive web tool built with JavaScript, Plotly, and Leaflet.",
+      "Designed for interdisciplinary research stakeholders as part of a funded fellowship at IU's O'Neill School.",
     ],
     stack: ["Google Earth Engine", "Python", "Plotly", "Leaflet", "SQL", "JavaScript"],
     metrics: [
       { value: "100+", label: "Global water bodies" },
-      { value: "—", label: "Add a metric" },
+      { value: "Live", label: "Interactive web tool" },
     ],
-    links: { github: "https://github.com/freny24", demo: "" },
+    impact:
+      "Turns raw Earth-observation data into an explorable tool that supports interdisciplinary floating-solar research.",
+    links: {
+      github: "https://github.com/freny24/fpv-webtool",
+      demo: "https://fpv-webtool.vercel.app/",
+      demoLabel: "Live Demo",
+    },
   },
   {
-    slug: "clinical-notes-summarizer",
-    title: "AI Clinical Notes Summarizer",
-    tagline: "Placeholder mission — fill in from your repo",
+    slug: "nhs111-dashboard",
+    title: "NHS 111 Analytics Dashboard",
+    tagline: "Turning health-service demand data into an explorable dashboard",
     category: "Healthcare AI",
-    missionType: "Research Lab",
+    missionType: "Satellite Dashboard",
     year: "2025",
-    verified: false,
-    problem: "Placeholder — describe the clinical summarization problem.",
-    approach: ["Placeholder — describe the model and pipeline."],
-    stack: ["Transformers", "HuggingFace", "Python"],
-    metrics: [{ value: "—", label: "Add a metric" }],
-    links: { github: "https://github.com/freny24", demo: "" },
+    verified: true,
+    problem:
+      "NHS 111 generates large volumes of service-demand data. Making it useful means shaping it into an interactive analytics view that surfaces patterns and trends at a glance.",
+    approach: [
+      "Built an analytics pipeline over NHS 111 demand data and shaped it for interactive exploration.",
+      "Delivered the results through a Streamlit dashboard with filterable views and trend visualizations.",
+    ],
+    stack: ["Python", "Pandas", "Streamlit", "Data Visualization"],
+    metrics: [
+      { value: "Live", label: "Streamlit dashboard" },
+      { value: "NHS 111", label: "Service demand data" },
+    ],
+    links: {
+      github: "https://github.com/freny24/NHS111-dashboard",
+      demo: "https://nhs111-dashboard.streamlit.app/",
+      demoLabel: "Live Dashboard",
+    },
   },
 ];
 

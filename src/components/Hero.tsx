@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import {
   FileText,
@@ -13,27 +12,34 @@ import {
 } from "lucide-react";
 import { site } from "@/lib/data";
 import { MagneticButton } from "./ui/MagneticButton";
-import { SceneErrorBoundary } from "./three/SceneErrorBoundary";
 import { stagger, fadeUp } from "@/lib/motion";
 
-const SpaceScene = dynamic(() => import("./three/SpaceScene"), {
-  ssr: false,
-  loading: () => null,
-});
+type StarSpec = {
+  size: number;
+  top: number;
+  left: number;
+  dur: number;
+  delay: number;
+  glow: boolean;
+};
 
-type StarSpec = { size: number; top: number; left: number; dur: number; delay: number };
-
-function StarFallback() {
+/**
+ * Animated CSS star field hero background. Rendered only after mount so the
+ * random positions never cause a hydration mismatch. Fully self-contained —
+ * no WebGL / three.js dependency, so it can never crash the page.
+ */
+function StarField() {
   const [stars, setStars] = useState<StarSpec[]>([]);
 
   useEffect(() => {
     setStars(
-      Array.from({ length: 70 }, () => ({
-        size: Math.random() * 2 + 0.5,
+      Array.from({ length: 90 }, (_, i) => ({
+        size: Math.random() * 2.4 + 0.5,
         top: Math.random() * 100,
         left: Math.random() * 100,
         dur: 2 + Math.random() * 4,
         delay: Math.random() * 4,
+        glow: i % 9 === 0,
       }))
     );
   }, []);
@@ -49,20 +55,25 @@ function StarFallback() {
             height: s.size,
             top: `${s.top}%`,
             left: `${s.left}%`,
+            boxShadow: s.glow
+              ? "0 0 8px 2px rgba(56,225,255,0.8)"
+              : undefined,
             // @ts-expect-error custom property
             "--dur": `${s.dur}s`,
             animationDelay: `${s.delay}s`,
           }}
         />
       ))}
+
+      {/* Soft floating nebula orbs for depth */}
+      <div className="absolute left-[12%] top-[24%] h-72 w-72 rounded-full bg-space-purple/20 blur-3xl animate-float-slow" />
+      <div className="absolute right-[10%] top-[40%] h-80 w-80 rounded-full bg-space-cyan/15 blur-3xl animate-float" />
+      <div className="absolute left-[45%] bottom-[8%] h-64 w-64 rounded-full bg-space-nebula/20 blur-3xl animate-float-slow" />
     </div>
   );
 }
 
 export function Hero() {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-
   return (
     <section
       id="home"
@@ -71,12 +82,7 @@ export function Hero() {
       <div className="pointer-events-none absolute inset-0 bg-grid-glow" />
 
       <div className="absolute inset-0 z-0">
-        <StarFallback />
-        {mounted && (
-          <SceneErrorBoundary fallback={null}>
-            <SpaceScene />
-          </SceneErrorBoundary>
-        )}
+        <StarField />
       </div>
 
       <div className="section relative z-10 grid items-center gap-10">
@@ -148,7 +154,7 @@ export function Hero() {
         aria-label="Scroll to about"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.4 }}
+        transition={{ delay: 1.2 }}
         className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 text-xs text-[var(--fg-muted)]"
       >
         <span className="font-mono uppercase tracking-widest">Scroll</span>
