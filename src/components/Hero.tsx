@@ -21,10 +21,10 @@ const SpaceScene = dynamic(() => import("./three/SpaceScene"), {
   loading: () => null,
 });
 
+type StarSpec = { size: number; top: number; left: number; dur: number; delay: number };
+
 function StarFallback() {
-  const [stars, setStars] = useState
-    { size: number; top: number; left: number; dur: number; delay: number }[]
-  >([]);
+  const [stars, setStars] = useState<StarSpec[]>([]);
 
   useEffect(() => {
     setStars(
