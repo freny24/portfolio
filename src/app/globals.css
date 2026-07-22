@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Dark (default) surface tokens */
+  --bg: #05060a;
+  --bg-soft: #0a0c14;
+  --fg: #f4f6ff;
+  --fg-muted: #98a2c4;
+  --border: rgba(255, 255, 255, 0.08);
+  --glass: rgba(255, 255, 255, 0.04);
+}
+
+/* Light mode overrides */
+.light {
+  --bg: #f6f7fb;
+  --bg-soft: #eef1f8;
+  --fg: #0b1020;
+  --fg-muted: #4a5478;
+  --border: rgba(10, 15, 40, 0.1);
+  --glass: rgba(255, 255, 255, 0.6);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* Respect reduced-motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ---------- Reusable component classes ---------- */
+@layer components {
+  .glass {
+    background: var(--glass);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border: 1px solid var(--border);
+  }
+
+  .glass-strong {
+    background: color-mix(in srgb, var(--glass) 60%, transparent);
+    backdrop-filter: blur(28px) saturate(160%);
+    -webkit-backdrop-filter: blur(28px) saturate(160%);
+    border: 1px solid var(--border);
+  }
+
+  .text-gradient {
+    background: linear-gradient(120deg, #ffffff 0%, #a5b4fc 45%, #38e1ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .light .text-gradient {
+    background: linear-gradient(120deg, #0b1020 0%, #6d5ef0 55%, #0d69b4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .aurora-text {
+    background: linear-gradient(120deg, #38e1ff, #8b5cf6, #6d5ef0, #38e1ff);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 6s linear infinite;
+  }
+
+  .section {
+    @apply relative mx-auto w-full max-w-6xl px-6 py-24 md:py-32;
+  }
+
+  .chip {
+    @apply inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium;
+    color: var(--fg-muted);
+    background: var(--glass);
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #6d5ef0, #38e1ff);
+  border-radius: 999px;
+  border: 2px solid var(--bg);
+}
+
+/* Selection */
+::selection {
+  background: rgba(109, 94, 240, 0.35);
+  color: #fff;
+}
+
+/* Star twinkle utility used by CSS star field */
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  animation: twinkle var(--dur, 4s) ease-in-out infinite;
+}
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
