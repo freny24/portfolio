@@ -58,8 +58,8 @@ export const navLinks = [
  * ========================================================== */
 export const about = {
   intro: [
-    "I'm a data scientist and AI engineer finishing my M.S. in Data Science at Indiana University. I like the unglamorous middle of the pipeline — the feature engineering, the leakage checks, the evaluation harnesses — because that's where a model earns trust.",
-    "My work spans agentic LLM systems, clinical machine learning, behavioral-finance analytics, and satellite geospatial science. Across all of it I care about the same thing: shipping something a real stakeholder can rely on, not a notebook that only runs on my laptop.",
+    "A 0.952-AUROC sepsis early-warning system. A 60% cut in vulnerability-analysis time at Nokia. A red-teamed agentic research assistant. I'm a data scientist and AI engineer finishing my M.S. at Indiana University, and I measure my work by whether it holds up outside the notebook.",
+    "What ties these together is a focus on the hard middle of the pipeline — feature engineering, leakage checks, calibration, evaluation — across agentic LLMs, clinical ML, behavioral finance, and satellite geospatial science. The goal is always the same: something a real stakeholder can trust.",
   ],
   stats: [
     { value: "0.952", label: "AUROC — Sepsis early-warning ensemble" },
