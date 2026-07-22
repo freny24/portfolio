@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import {
@@ -12,57 +13,72 @@ import {
 } from "lucide-react";
 import { site } from "@/lib/data";
 import { MagneticButton } from "./ui/MagneticButton";
+import { SceneErrorBoundary } from "./three/SceneErrorBoundary";
 import { stagger, fadeUp } from "@/lib/motion";
 
-// 3D scene is heavy — load it only on the client, after paint (code splitting).
 const SpaceScene = dynamic(() => import("./three/SpaceScene"), {
   ssr: false,
-  loading: () => <StarFallback />,
+  loading: () => null,
 });
 
-/** Pure-CSS star field shown while the 3D canvas loads (and as a graceful base). */
 function StarFallback() {
-  const stars = Array.from({ length: 60 });
+  const [stars, setStars] = useState
+    { size: number; top: number; left: number; dur: number; delay: number }[]
+  >([]);
+
+  useEffect(() => {
+    setStars(
+      Array.from({ length: 70 }, () => ({
+        size: Math.random() * 2 + 0.5,
+        top: Math.random() * 100,
+        left: Math.random() * 100,
+        dur: 2 + Math.random() * 4,
+        delay: Math.random() * 4,
+      }))
+    );
+  }, []);
+
   return (
     <div className="absolute inset-0 overflow-hidden">
-      {stars.map((_, i) => {
-        const size = Math.random() * 2 + 0.5;
-        return (
-          <span
-            key={i}
-            className="star"
-            style={{
-              width: size,
-              height: size,
-              top: `${Math.random() * 100}%`,
-              left: `${Math.random() * 100}%`,
-              // @ts-expect-error custom property
-              "--dur": `${2 + Math.random() * 4}s`,
-              animationDelay: `${Math.random() * 4}s`,
-            }}
-          />
-        );
-      })}
+      {stars.map((s, i) => (
+        <span
+          key={i}
+          className="star"
+          style={{
+            width: s.size,
+            height: s.size,
+            top: `${s.top}%`,
+            left: `${s.left}%`,
+            // @ts-expect-error custom property
+            "--dur": `${s.dur}s`,
+            animationDelay: `${s.delay}s`,
+          }}
+        />
+      ))}
     </div>
   );
 }
 
 export function Hero() {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+
   return (
     <section
       id="home"
       className="relative flex min-h-[100svh] items-center overflow-hidden"
     >
-      {/* Background glow */}
       <div className="pointer-events-none absolute inset-0 bg-grid-glow" />
 
-      {/* 3D layer */}
       <div className="absolute inset-0 z-0">
         <StarFallback />
-        <SpaceScene />
+        {mounted && (
+          <SceneErrorBoundary fallback={null}>
+            <SpaceScene />
+          </SceneErrorBoundary>
+        )}
       </div>
 
-      {/* Foreground copy */}
       <div className="section relative z-10 grid items-center gap-10">
         <motion.div
           variants={stagger}
@@ -127,7 +143,6 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Scroll cue */}
       <motion.a
         href="#about"
         aria-label="Scroll to about"
@@ -140,7 +155,6 @@ export function Hero() {
         <ArrowDown className="h-4 w-4 animate-bounce" />
       </motion.a>
 
-      {/* Bottom fade into page */}
       <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-32 bg-gradient-to-b from-transparent to-[var(--bg)]" />
     </section>
   );
