@@ -2,7 +2,7 @@
  * ─────────────────────────────────────────────────────────────
  *  SINGLE SOURCE OF TRUTH
  *  Every piece of portfolio content lives here. Edit this file to
- *  update the whole site — no component surgery required.
+ *  update the whole site, no component surgery required.
  *
  *  ⚠️  PLACEHOLDERS TO FILL IN are marked with  // TODO
  * ─────────────────────────────────────────────────────────────
@@ -30,7 +30,7 @@ export const site = {
   role: "Data Scientist · ML & AI Engineer",
   headline: "I build AI systems that turn messy signals into trustworthy decisions.",
   subheadline:
-    "M.S. Data Science @ Indiana University. I ship end-to-end ML — from agentic LLM systems and clinical early-warning models to geospatial dashboards that stakeholders actually use.",
+    "M.S. Data Science @ Indiana University. I ship end-to-end ML, from agentic LLM systems and clinical early-warning models to geospatial dashboards that stakeholders actually use.",
   location: "Bloomington, IN",
   phone: "+1 (930) 333-7048",
   email: "freny.reji.ds@gmail.com",
@@ -54,15 +54,17 @@ export const navLinks = [
 ] as const;
 
 /* ============================================================
- *  ABOUT — narrative + quick stats
+ *  ABOUT, narrative + quick stats
  * ========================================================== */
 export const about = {
   intro: [
-    "A 0.952-AUROC sepsis early-warning system. A 60% cut in vulnerability-analysis time at Nokia. A red-teamed agentic research assistant. I'm a data scientist and AI engineer finishing my M.S. at Indiana University, and I measure my work by whether it holds up outside the notebook.",
-    "What ties these together is a focus on the hard middle of the pipeline — feature engineering, leakage checks, calibration, evaluation — across agentic LLMs, clinical ML, behavioral finance, and satellite geospatial science. The goal is always the same: something a real stakeholder can trust.",
+    "I've analyzed 200,000+ patient records to surface health disparities, built a sepsis early warning system using clinical time-series data, and automated vulnerability detection pipelines at Nokia.",
+    "My work sits at the intersection of rigorous engineering and real-world impact, whether that's clinical decision support, health equity, or operational efficiency. I'm drawn to problems where getting it right actually changes outcomes for people.",
+    "Currently contributing to research at Indiana University focused on floating solar energy systems, geospatial analytics, and environmental monitoring. I'm working toward the public release of a global FPV dashboard and exploring opportunities to publish in a data science journal.",
+    "Open to Data Scientist, ML Engineer, and AI roles, especially in Health, Energy, or any domain where data can drive better decisions for people. Let's connect.",
   ],
   stats: [
-    { value: "0.952", label: "AUROC — Sepsis early-warning ensemble" },
+    { value: "0.952", label: "AUROC, Sepsis early-warning ensemble" },
     { value: "60%", label: "Faster vulnerability analysis at Nokia" },
     { value: "3,000+", label: "CVEs auto-matched with HDBSCAN + LLMs" },
     { value: "$3,000", label: "Competitive research fellowship, IU" },
@@ -88,7 +90,7 @@ export type Experience = {
 
 export const experience: Experience[] = [
   {
-    role: "Graduate Research Assistant — Data Visualization, Floating Solar Energy",
+    role: "Graduate Research Assistant, Data Visualization, Floating Solar Energy",
     org: "O'Neill School of Public & Environmental Affairs, Indiana University",
     location: "Bloomington, IN",
     period: "Jan 2026 – Present",
@@ -103,7 +105,7 @@ export const experience: Experience[] = [
     location: "Bengaluru, India",
     period: "Aug 2023 – May 2024",
     bullets: [
-      "Reduced vulnerability-analysis time by 60% by automating component-vulnerability matching across 3,000+ CVEs using HDBSCAN clustering and LLM-based entity linking — directly applicable to Telco KPI anomaly-detection workflows.",
+      "Reduced vulnerability-analysis time by 60% by automating component-vulnerability matching across 3,000+ CVEs using HDBSCAN clustering and LLM-based entity linking, directly applicable to Telco KPI anomaly-detection workflows.",
       "Improved detection accuracy by 40% via transformer-based semantic similarity scoring, validating ML pipelines for production deployment.",
       "Increased test coverage 35% and cut debugging time 25% by building optimized Robot Framework automation suites with CI/CD integration.",
     ],
@@ -114,7 +116,7 @@ export const experience: Experience[] = [
  *  PROJECTS ("Missions")
  *  Each project is framed as a mission. Placeholder projects
  *  (verified = false) render with a "Coming online" badge and
- *  editable fields — fill them in and flip verified to true.
+ *  editable fields, fill them in and flip verified to true.
  * ========================================================== */
 export type Project = {
   slug: string;
@@ -146,10 +148,10 @@ export const projects: Project[] = [
     verified: true,
     featured: true,
     problem:
-      "General-purpose chatbots answer confidently but can't show their work — they hallucinate, cite nothing, and are trivially hijacked by malicious content pulled in from the web.",
+      "General-purpose chatbots answer confidently but can't show their work, they hallucinate, cite nothing, and are trivially hijacked by malicious content pulled in from the web.",
     approach: [
       "Built an agentic RAG assistant on Claude's tool-use API in a ReAct loop with cost-aware query routing, autonomously querying live NewsAPI and Wikipedia to produce cited, confidence-scored answers.",
-      "Designed and red-teamed a prompt-injection defense layer — untrusted-data wrapping plus pattern-based scanning — against adversarial retrieved content, validated by an automated adversarial test suite.",
+      "Designed and red-teamed a prompt-injection defense layer, untrusted-data wrapping plus pattern-based scanning, against adversarial retrieved content, validated by an automated adversarial test suite.",
       "Built an LLM-judge evaluation harness comparing agentic vs. naive RAG across a 15-question set, showing a consistent relevance gain (+1.0 to +1.6 pts) across repeated runs.",
     ],
     stack: [
@@ -167,7 +169,7 @@ export const projects: Project[] = [
       { value: "ReAct", label: "Cost-aware agent routing" },
     ],
     challenges:
-      "Retrieved web content is untrusted by definition. Separating instructions from data — so an article couldn't tell the agent what to do — required a wrapping scheme plus an adversarial test suite that actively tried to break it.",
+      "Retrieved web content is untrusted by definition. Separating instructions from data, so an article couldn't tell the agent what to do, required a wrapping scheme plus an adversarial test suite that actively tried to break it.",
     impact:
       "Turns an LLM from a confident guesser into an auditable researcher: every claim is traceable to a source and scored for confidence.",
     lessons:
@@ -188,7 +190,7 @@ export const projects: Project[] = [
     verified: true,
     featured: true,
     problem:
-      "Sepsis kills when it's caught late. Clinicians need a calibrated, early risk signal from noisy ICU time-series — one they can trust enough to act on, without drowning in false alarms.",
+      "Sepsis kills when it's caught late. Clinicians need a calibrated, early risk signal from noisy ICU time-series, one they can trust enough to act on, without drowning in false alarms.",
     approach: [
       "Built an end-to-end clinical ML pipeline on synthetic ICU time-series with SOFA-based feature engineering (delta-vitals, rolling stats, shock index).",
       "Trained an XGBoost + LSTM ensemble with isotonic probability calibration, using strict patient-level train/test splits to prevent leakage.",
@@ -209,7 +211,7 @@ export const projects: Project[] = [
       { value: "10", label: "Alerts / 100 patient-days" },
     ],
     challenges:
-      "Preventing data leakage. Patient-level splits (not random row splits) were non-negotiable — otherwise the model 'cheats' by seeing the same patient in train and test, and the AUROC becomes a lie.",
+      "Preventing data leakage. Patient-level splits (not random row splits) were non-negotiable, otherwise the model 'cheats' by seeing the same patient in train and test, and the AUROC becomes a lie.",
     impact:
       "A calibrated risk score plus a tunable alert threshold lets a care team dial the sensitivity/alert-fatigue trade-off to their own tolerance.",
     lessons:
@@ -276,7 +278,7 @@ export const projects: Project[] = [
     challenges:
       "Sentiment alone is a weak signal. Combining a lexicon model (VADER) with a fine-tuned transformer captured both broad tone and nuanced context.",
     impact:
-      "SHAP made the model interpretable — showing which sentiment and metadata features actually moved the revenue forecast.",
+      "SHAP made the model interpretable, showing which sentiment and metadata features actually moved the revenue forecast.",
     lessons:
       "Explainability turns a prediction into an argument a stakeholder can reason about.",
     links: {
@@ -300,7 +302,7 @@ export const projects: Project[] = [
     year: "2026",
     verified: true,
     problem:
-      "Assessing where floating solar is viable means tracking many water bodies over time — combining satellite imagery, ecological indicators, and trends into something researchers can actually explore, not raw pixels.",
+      "Assessing where floating solar is viable means tracking many water bodies over time, combining satellite imagery, ecological indicators, and trends into something researchers can actually explore, not raw pixels.",
     approach: [
       "Process satellite time-series for global water bodies using ML workflows in Python and Google Earth Engine.",
       "Surface geospatial maps, ecological indicators, and trend analysis through an interactive web tool built with JavaScript, Plotly, and Leaflet.",
@@ -347,7 +349,7 @@ export const projects: Project[] = [
 ];
 
 /* ============================================================
- *  SKILLS — Mission Control dashboard
+ *  SKILLS, Mission Control dashboard
  * ========================================================== */
 export type SkillCategory = {
   name: string;
@@ -456,7 +458,7 @@ export const skillCategories: SkillCategory[] = [
 ];
 
 /* ============================================================
- *  TIMELINE — career roadmap
+ *  TIMELINE, career roadmap
  * ========================================================== */
 export type TimelineItem = {
   year: string;
@@ -525,7 +527,7 @@ export const timeline: TimelineItem[] = [
 export const certifications = [
   "Amazon ML Summer School Participant",
   "IBM AI Developer Associate",
-  "SQL Fundamentals — DataCamp",
+  "SQL Fundamentals, DataCamp",
 ];
 
 /* ============================================================

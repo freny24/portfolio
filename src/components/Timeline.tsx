@@ -34,7 +34,7 @@ export function Timeline() {
       <SectionHeading
         eyebrow="Trajectory"
         title="Flight path"
-        description="Education, research, industry, and what comes next — a launch sequence, not a résumé dump."
+        description="Education, research, industry, and what comes next, a launch sequence, not a résumé dump."
       />
 
       {/* Left-rail timeline: reliable and clean on every device. */}

@@ -11,7 +11,7 @@ export function Skills() {
       <SectionHeading
         eyebrow="Mission Control"
         title="Systems & instruments"
-        description="The stack I fly with — organized by domain, not by a meaningless percentage bar."
+        description="The stack I fly with, organized by domain, not by a meaningless percentage bar."
       />
 
       {/* Experience strip */}

@@ -28,7 +28,7 @@ export function Projects() {
       <SectionHeading
         eyebrow="Mission Log"
         title="Selected missions"
-        description="Every project framed as a mission — the problem, the build, the measurable outcome. Open a brief for the full story."
+        description="Every project framed as a mission, the problem, the build, the measurable outcome. Open a brief for the full story."
       />
 
       {/* Category filter */}

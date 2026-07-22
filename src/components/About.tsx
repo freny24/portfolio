@@ -12,9 +12,9 @@ export function About() {
   return (
     <section id="about" className="section">
       <SectionHeading
-        eyebrow="Flight Log"
-        title="Building a career one block at a time"
-        description="A data scientist who cares about the middle of the pipeline — where a model earns trust."
+        eyebrow="About Me"
+        title="Building models where the output genuinely matters"
+        description="Data Scientist & ML Engineer drawn to problems where getting it right actually changes outcomes for people."
       />
 
       <div className="grid gap-6 lg:grid-cols-5">
